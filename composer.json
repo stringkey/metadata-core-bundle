@@ -1,0 +1,33 @@
+{
+    "name": "stringkey/metadata-core-bundle",
+    "description": "Metadata core bundle with all functionality that is common to all metadata related bundles",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "keywords": ["metadata", "core", "symfony", "bundle", "stringkey"],
+    "homepage": "https://github.com/stringkey/metadata-core-bundle",
+    "autoload": {
+        "psr-4": {
+            "Stringkey\\MetadataCoreBundle\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Erik van de Laar",
+            "email": "stringkey@wxs.nl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.1",
+        "ext-ctype": "*",
+        "ext-xml":  "*",
+        "symfony/config": "^6.4 || ^7.0",
+        "symfony/form": "^6.4 || ^7.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0",
+        "symfony/http-kernel": "^6.4 || ^7.0",
+        "symfony/uid": "^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "^7.2"
+    }
+}
