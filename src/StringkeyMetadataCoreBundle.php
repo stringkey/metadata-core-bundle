@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Stringkey\OptionMapperBundle;
+namespace Stringkey\MetadataCoreBundle;
 
-use Stringkey\OptionMapperBundle\DependencyInjection\StringkeyMetadataCoreExtension;
+use Stringkey\MetadataCoreBundle\DependencyInjection\StringkeyMetadataCoreExtension;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
