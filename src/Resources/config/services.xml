@@ -8,7 +8,7 @@
         <defaults autowire="true" autoconfigure="true"/>
         <prototype namespace="Stringkey\MetadataCoreBundle\" resource="../../../src" exclude="../src/{DependencyInjection,Entity,Kernel.php}"/>
 
-        <!--  -->
+        <!-- Handle prefix for table names -->
         <service id="Stringkey\MetadataCoreBundle\Listener\MetadataTablePrefixListener">
             <argument key="$prefix">%env(METADATA_TABLE_PREFIX)%</argument>
             <tag name="doctrine.event_listener"

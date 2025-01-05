@@ -24,7 +24,8 @@ class MetadataTablePrefixListener
     // with the applicable class(es) configured
 
     private const bundles = [
-        'Stringkey\MetadataCoreBundle\Entity'
+        'Stringkey\MetadataCoreBundle\Entity',
+        'Stringkey\OptionMapperBundle\Entity',
     ];
 
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void

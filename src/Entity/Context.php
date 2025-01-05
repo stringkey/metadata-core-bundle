@@ -4,17 +4,19 @@ namespace Stringkey\MetadataCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Stringkey\MetadataCoreBundle\Repository\ContextRepository;
+use Symfony\Bridge\Doctrine\Types\UuidType;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table(name: 'context')]
 #[ORM\Entity(repositoryClass: ContextRepository::class)]
-
 class Context
 {
     #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
-    #[ORM\GeneratedValue(strategy: 'AUTO')]
-    protected ?int $id;
+    #[ORM\Column(type: UuidType::NAME, unique: true)]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator')]
+    private ?Uuid $id = null;
 
     #[ORM\Column(name: 'name', type: 'string')]
     #[Assert\NotBlank(message: 'Name should not be blank')]
@@ -25,16 +27,16 @@ class Context
         $this->name = $name;
     }
 
-    public function setId($id): static
+    public function getId(): ?Uuid
+    {
+        return $this->id;
+    }
+
+    public function setId(?Uuid $id): self
     {
         $this->id = $id;
 
         return $this;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
     }
 
     public function setName(string $name): static
