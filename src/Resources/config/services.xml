@@ -7,5 +7,14 @@
     <services>
         <defaults autowire="true" autoconfigure="true"/>
         <prototype namespace="Stringkey\MetadataCoreBundle\" resource="../../../src" exclude="../src/{DependencyInjection,Entity,Kernel.php}"/>
+
+        <!--  -->
+        <service id="Stringkey\MetadataCoreBundle\Listener\MetadataTablePrefixListener">
+            <argument key="$prefix">%env(METADATA_TABLE_PREFIX)%</argument>
+            <tag name="doctrine.event_listener"
+                 event="loadClassMetadata"
+                 priority="500"
+                 connection="default"/>
+        </service>
     </services>
 </container>
