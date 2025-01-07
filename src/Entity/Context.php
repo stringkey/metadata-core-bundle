@@ -22,11 +22,6 @@ class Context
     #[Assert\NotBlank(message: 'Name should not be blank')]
     protected string $name;
 
-    public function __construct(string $name)
-    {
-        $this->name = $name;
-    }
-
     public function getId(): ?Uuid
     {
         return $this->id;
