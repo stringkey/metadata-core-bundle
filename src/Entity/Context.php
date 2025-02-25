@@ -3,6 +3,8 @@
 namespace Stringkey\MetadataCoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Stringkey\MapperBundle\Entity\MappableEntity;
+use Stringkey\MapperBundle\Interface\MappableEntityInterface;
 use Stringkey\MetadataCoreBundle\Repository\ContextRepository;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
@@ -10,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table(name: 'context')]
 #[ORM\Entity(repositoryClass: ContextRepository::class)]
-class Context
+class Context implements MappableEntityInterface
 {
     #[ORM\Id]
     #[ORM\Column(type: UuidType::NAME, unique: true)]
@@ -34,6 +36,11 @@ class Context
         return $this;
     }
 
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
     public function setName(string $name): static
     {
         $this->name = $name;
@@ -41,9 +48,14 @@ class Context
         return $this;
     }
 
-    public function getName(): string
+    public function getInstanceName(): string
     {
         return $this->name;
+    }
+
+    public static function getEntityName(): string
+    {
+        return 'Context';
     }
 
     public function __toString()
